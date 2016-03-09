@@ -172,6 +172,7 @@ class HighchartRender(object):
                         value = 1  # TOOD: Map serie_field with posible serie_operator
                     serie_values.append(float(value))
 
+            grouper = unicode(grouper)
             grouper = unicodeToHTMLEntities(grouper)
             xAxis_categories.append(grouper)
             data = self.model.serie_obj.create(**{
@@ -195,7 +196,7 @@ class HighchartRender(object):
         self.model.plotOptions.line.enableMouseTracking = false
 
         self.model.tooltip.enabled = true
-        self.model.tooltip.formatter = "function() { return '<b>'+this.series.name+'</b> '+this.x+': '+this.y; }"
+        self.model.tooltip.formatter = "function() { console.log('tooltip'); return '<b>'+this.series.name+'</b> '+this.x+': '+this.y; }"
 
     def is_valid(self):
         if self.config:
